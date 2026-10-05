@@ -2,10 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta property="og:image" content="https://rainbow-gaufre-c33b57.netlify.app/.netlify/og-image/0d0e69abd9bf8384efc2be7764d4f284.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Phadak sources and delivers crude oil, sulphur, petrochemicals and refined products on FOB, CIF, CFR, DAP and STS terms across the Middle East, Africa and Asia.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2718%27 fill=%27%230E1A24%27/%3E%3Cpath d=%27M50 14 L81 32 L81 68 L50 86 L19 68 L19 32 Z%27 fill=%27none%27 stroke=%27white%27 stroke-width=%276%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M50 33 C50 33 37 48 37 57 A13 13 0 0 0 63 57 C63 48 50 33 50 33 Z%27 fill=%27%23F2C230%27/%3E%3C/svg%3E">
-<title>Phadak</title>
+<title>Phadak · Energy &amp; Commodities Trading</title>
+<link rel="canonical" href="https://www.phadak.no/">
+<link rel="alternate" hreflang="en" href="https://www.phadak.no/">
+<link rel="alternate" hreflang="ar" href="https://www.phadak.no/ar/">
+<link rel="alternate" hreflang="x-default" href="https://www.phadak.no/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Phadak">
+<meta property="og:title" content="Phadak · Energy &amp; Commodities Trading">
+<meta property="og:description" content="Phadak sources and delivers crude oil, sulphur, petrochemicals and refined products on FOB, CIF, CFR, DAP and STS terms across the Middle East, Africa and Asia.">
+<meta property="og:url" content="https://www.phadak.no/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
@@ -45,6 +59,7 @@ a{color:inherit}
 .nav nav{display:flex;gap:6px 22px;flex-wrap:wrap}
 .nav nav a{color:var(--on-ink-muted);text-decoration:none;font-size:15px;padding-block:6px}
 .nav nav a:hover{color:var(--on-ink)}
+.nav nav a.lang{color:var(--accent);font-weight:600}
 
 /* hero */
 .hero-band{background:var(--ink);color:var(--on-ink)}
@@ -160,6 +175,9 @@ details p{color:var(--muted);padding-bottom:20px;max-width:68ch}
 .field textarea{min-height:110px;resize:vertical}
 .form button{background:var(--accent);color:#0E1A24;border:0;font-weight:600;padding:14px 24px;font-size:15px;justify-self:start}
 .form-status{font-size:14px;color:var(--muted)}
+.form-status strong{color:var(--fg)}
+.form button:disabled{opacity:.6;cursor:wait}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-status pre{white-space:pre-wrap;background:var(--surface);padding:12px;border-radius:8px;font-size:13px;margin:8px 0 0;user-select:all}
 @media (max-width:520px){.form{grid-template-columns:1fr}}
 
@@ -182,6 +200,7 @@ footer .brand span{color:var(--on-ink);font-size:16px}
       <a href="#services">Services</a>
       <a href="#compliance">Compliance</a>
       <a href="#contact">Contact</a>
+      <a class="lang" href="/ar/" hreflang="ar" lang="ar">العربية</a>
     </nav>
   </div>
 </header>
@@ -402,12 +421,18 @@ footer .brand span{color:var(--on-ink);font-size:16px}
       <div class="head">
         <p class="label">Contact</p>
         <h2>Request an offer</h2>
-        <p class="lead">Fill in the form and your email app will open with the enquiry ready to send. You can also reach us directly.</p>
+        <p class="lead">Send us your requirement and we reply with an offer. You can also reach us directly.</p>
       </div>
       <div class="contact">
-        <form class="form" id="enquiry" novalidate>
+        <form action='/thank-you' class='form' id='enquiry' method='POST' name='enquiry' novalidate>
+          <input type="hidden" name="form-name" value="enquiry">
+          <input type="hidden" name="subject" value="New enquiry from phadak.no">
+          <input type="hidden" name="lang" value="English">
+          <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="fullname" autocomplete="name" required></div>
           <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization" required></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-phone">Phone <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
           <div class="field"><label for="f-product">Product</label>
             <select id="f-product" name="product"><option>Crude oil</option><option>Sulphur</option><option>Petrochemicals</option><option>Refined products</option><option>Other</option></select></div>
           <div class="field"><label for="f-term">Delivery term</label>
@@ -415,7 +440,7 @@ footer .brand span{color:var(--on-ink);font-size:16px}
           <div class="field"><label for="f-qty">Quantity</label><input id="f-qty" name="qty" placeholder="e.g. 50,000 MT per month"></div>
           <div class="field"><label for="f-port">Destination port</label><input id="f-port" name="port" placeholder="e.g. Durban"></div>
           <div class="field full"><label for="f-msg">Specification and notes</label><textarea id="f-msg" name="msg"></textarea></div>
-          <button type="submit" class="full">Prepare enquiry email</button>
+          <button type="submit" class="full">Send enquiry</button>
           <div class="form-status full" id="form-status" aria-live="polite"></div>
         </form>
         <div class="cards">
@@ -455,19 +480,32 @@ document.querySelectorAll('[data-copy]').forEach(function(btn){
 
 document.getElementById('enquiry').addEventListener('submit', function(e){
   e.preventDefault();
-  var f = e.target, status = document.getElementById('form-status');
-  var name = f.fullname.value.trim(), company = f.company.value.trim();
+  var f = e.target, status = document.getElementById('form-status'), btn = f.querySelector('button[type="submit"]');
+  var name = f.fullname.value.trim(), company = f.company.value.trim(), email = f.email.value.trim();
   if(!name || !company){ status.textContent = 'Add your name and company so we know who the enquiry is from.'; (name ? f.company : f.fullname).focus(); return; }
-  var body = 'Name: ' + name + '\nCompany: ' + company + '\nProduct: ' + f.product.value + '\nDelivery term: ' + f.term.value +
-    '\nQuantity: ' + (f.qty.value || '-') + '\nDestination: ' + (f.port.value || '-') + '\n\nSpecification and notes:\n' + (f.msg.value || '-');
-  var subject = 'Enquiry: ' + f.product.value + ' ' + f.term.value + ' – ' + company;
-  window.location.href = 'mailto:hussain@phadak.no?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  status.innerHTML = '';
-  var p = document.createElement('span');
-  p.textContent = 'If your email app did not open, copy this enquiry and send it to hussain@phadak.no:';
-  var pre = document.createElement('pre'); pre.textContent = 'Subject: ' + subject + '\n\n' + body;
-  status.appendChild(p); status.appendChild(pre);
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ status.textContent = 'Add a valid email address so we can send you the offer.'; f.email.focus(); return; }
+  f.subject.value = 'Enquiry: ' + f.product.value + ' ' + f.term.value + ' – ' + company;
+  btn.disabled = true; btn.textContent = 'Sending…'; status.textContent = '';
+  fetch('/', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: new URLSearchParams(new FormData(f)).toString()
+  }).then(function(res){
+    if(!res.ok) throw new Error(res.status);
+    f.reset();
+    status.innerHTML = '<strong>Thank you, your enquiry has been sent.</strong> We will reply to ' + email.replace(/[<>&"]/g, '') + ' shortly.';
+  }).catch(function(){
+    var body = 'Name: ' + name + '\nCompany: ' + company + '\nEmail: ' + email + '\nPhone: ' + (f.phone.value || '-') +
+      '\nProduct: ' + f.product.value + '\nDelivery term: ' + f.term.value +
+      '\nQuantity: ' + (f.qty.value || '-') + '\nDestination: ' + (f.port.value || '-') + '\n\nSpecification and notes:\n' + (f.msg.value || '-');
+    status.innerHTML = '';
+    var p = document.createElement('span');
+    p.textContent = 'We could not send the form. Please email this enquiry to hussain@phadak.no:';
+    var pre = document.createElement('pre'); pre.textContent = 'Subject: ' + f.subject.value + '\n\n' + body;
+    status.appendChild(p); status.appendChild(pre);
+  }).finally(function(){ btn.disabled = false; btn.textContent = 'Send enquiry'; });
 });
 </script>
+<script async src="/.netlify/scripts/ar" data-netlify-deploy-id="6ac385b6819dc1986104619e" data-netlify-site-id="e90536ab-a50e-409a-8608-7be99fde8ad1" data-agent-runner-id="6ac357fcb86bb83e64adbe4f"></script>
 </body>
 </html>
